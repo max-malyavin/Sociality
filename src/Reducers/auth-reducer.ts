@@ -11,7 +11,6 @@ export type InitialStateType = {
     captchaURL: string  | null,
 }
 
-
 let initialState = {
     id: null,
     email: null,
@@ -60,9 +59,7 @@ type CaptchaActionType ={
     payload: string
 }
 
-
 const CAPTCHA = (url: string): CaptchaActionType => ({type: GET_CAPTCHA_URL, payload: url})
-
 
 
 

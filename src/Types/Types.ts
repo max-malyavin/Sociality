@@ -8,7 +8,6 @@ export type PhotosType = {
     small: string | null,
     large: string | null,
 }
-
 export type ContactsType = {
     github: string,
     vk: string,
@@ -27,3 +26,11 @@ export type ProfileType = {
     contacts: ContactsType,
     photos: PhotosType
 }
+export type UserType = {
+    id: number,
+    name: string,
+    status: string,
+    photos: PhotosType
+}
+
+

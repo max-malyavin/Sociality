@@ -1,15 +1,6 @@
 import { TOGGLE_IS_FOLLOWING_PROGRESS,FOLLOW, UNFOLLOW, SET_USERS, CURRENT_PAGE, SET_TOTAL_USERS_COUNT,TOGGLE_IS_FETCHING } from "../Constants/Constants";
 import { updateObjectInArray } from "../Utils/helpers/Object-helpers";
-import { PhotosType } from "../Types/Types";
-
-
-
-type UserType = {
-    id: number,
-    name: string,
-    status: string,
-    photos: PhotosType
-}
+import { PhotosType, UserType } from "../Types/Types";
 
 
 
@@ -70,3 +61,66 @@ export type InitialStateType = typeof initialState;
 }
 
 export default usersReducer;
+
+
+type setTotalUserCountType = {
+    type: typeof SET_TOTAL_USERS_COUNT,
+    totalCount: number
+}
+
+
+type setCurrentPageType = {
+    type: typeof CURRENT_PAGE,
+    pageNumber: number
+}
+
+type toggleFetchingType = {
+    type: typeof TOGGLE_IS_FETCHING,
+    isFetching: boolean
+}
+
+
+type toggleFollowingProgressType = {
+    type: typeof TOGGLE_IS_FOLLOWING_PROGRESS,
+    isFetching: boolean,
+    userId: number
+}
+
+
+type followActionType = {
+    type: typeof FOLLOW,
+    userID: number
+}
+
+
+type setUsersActionType = {
+    type: typeof SET_USERS,
+    users: Array<UserType>
+}
+
+
+
+type unfollowActionType = {
+    type: typeof UNFOLLOW,
+    userID: number
+}
+
+
+
+
+
+
+
+
+export const setTotalUserCount = (totalCount:number):setTotalUserCountType => ({type: SET_TOTAL_USERS_COUNT, totalCount})
+export const setCurrentPage = (pageNumber:number):setCurrentPageType => ({type: CURRENT_PAGE, pageNumber})
+export const toggleFetching = (isFetching:boolean):toggleFetchingType => ({type: TOGGLE_IS_FETCHING, isFetching})
+export const toggleFollowingProgress = (isFetching:boolean,userId:number):toggleFollowingProgressType => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId})
+
+
+export const follow = (userID:number):followActionType => ({type: FOLLOW, userID})
+
+export const setUsers = (users: Array<UserType>):setUsersActionType => ({type: SET_USERS, users})
+
+
+export const unfollow = (userID: number):unfollowActionType => ({type: UNFOLLOW, userID})

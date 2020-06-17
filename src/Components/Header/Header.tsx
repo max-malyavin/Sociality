@@ -5,12 +5,22 @@ import './Header.scss';
 import { connect } from 'react-redux';
 import {  logout } from '../../ThunkCreator/ThunkCreator';
 
-const Header = ({auth: {login, isAuth}, logout,getAuthUserData, ...props}) => {
+
+
+
+type Props = {
+    login: string,
+    isAuth: boolean,
+    logout: () => void,
+}
+
+
+const Header: React.FC<Props> = ({login, isAuth, logout}) => {
    
-    const handleLogout = (e) =>{
+    const handleLogout = () =>{
             logout()
     }
-    const validateLogin = (login) => {
+    const validateLogin = (login:string) => {
      return `${login.slice(0,1)}${login.length > 10 
         ? `${login.slice(1,10)}...` 
         : login.slice(1)}` 
@@ -47,9 +57,10 @@ const Header = ({auth: {login, isAuth}, logout,getAuthUserData, ...props}) => {
     )
 }
 
-const  mapStateToProps = (state) => {
+const  mapStateToProps = (state:any) => {
     return {
-        auth: state.auth,
+        login: state.auth.login,
+        isAuth: state.auth.isAuth,
     }
 }
 

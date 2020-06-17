@@ -5,10 +5,23 @@ import User from './User'
 import './Users.scss'
 import { getUsersThunk, unfollowThunk, followThunk } from '../../../ThunkCreator/ThunkCreator'
 import { Pagination } from 'antd';
+import { UserType } from '../../../Types/Types'
 
-    
+type Props = {
+    pageSize: number,
+    isFetching: boolean,
+    totalUsersCount: number,
+    users: Array<UserType> | any,
+    followingInProgress: any,
+    currentPage: number,
+    followThunk: any,
+    unfollowThunk: any,
+    getUsersThunk: any,
+    usersPage:any,
+}
 
-const Users = ({users: {usersPage: {users, pageSize, isFetching, totalUsersCount,
+
+const Users: React.FC<Props> = ({users: {usersPage: {users, pageSize, isFetching, totalUsersCount,
     followingInProgress,currentPage}},
     followThunk, unfollowThunk,
      getUsersThunk
@@ -18,7 +31,7 @@ const Users = ({users: {usersPage: {users, pageSize, isFetching, totalUsersCount
         getUsersThunk( currentPage,pageSize )
       }, []);
    
-      const onPageChanged = (pageNumber) => {
+      const onPageChanged = (pageNumber:number) => {
         getUsersThunk( pageNumber,pageSize )
       }
 
@@ -41,7 +54,7 @@ const Users = ({users: {usersPage: {users, pageSize, isFetching, totalUsersCount
 
         {isFetching ? null : <div>
             <div style={{display: 'flex', marginTop: '30px', flexWrap: 'wrap',justifyContent: 'space-between'}}>
-            {users.map(u=> <User
+            {users.map((u: any)=> <User
              follow ={followThunk}
              unfollow ={unfollowThunk}
              followingInProgress={followingInProgress}
@@ -58,7 +71,7 @@ const Users = ({users: {usersPage: {users, pageSize, isFetching, totalUsersCount
     )
 }
 
-const  mapStateToProps = (state) => {
+const  mapStateToProps = (state: any) => {
     return {
         users: state
     }
