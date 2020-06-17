@@ -1,5 +1,6 @@
 import { APP_POST, SET_USER_PROFILE, SET_STATUS, SAVE_PHOTO_SUCCES, ADD__LIKE, DIS__LIKE } from "../Constants/Constants";
-import { stubTrue } from "lodash";
+import { ProfileType, PostsType, PhotosType } from "../Types/Types";
+
 
 const initialState = {
     posts:[
@@ -12,12 +13,14 @@ const initialState = {
         text: 'Мой первый пост! :)))',
         likes: 1,
         myLike: true},
-    ],
-    profile: null,
+    ] as Array<PostsType>,
+    profile: null as ProfileType | null | any,
     status: ''
    };
 
- const profileReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState;
+
+ const profileReducer = (state = initialState, action: any): InitialStateType => {
      
     switch (action.type) {
 
@@ -28,7 +31,7 @@ const initialState = {
                       likes: 0,
                       myLike: false
                     },  ...state.posts,  ],
-                    newPostText: ''};
+                };
 
         case SET_USER_PROFILE: 
                     return{ ...state,
@@ -74,3 +77,42 @@ const initialState = {
 }
 
 export default profileReducer;
+
+
+
+type AddPostActionType = {
+    type: typeof APP_POST,
+    payload: string
+}
+
+const addPost = (newPostBody: string): AddPostActionType => ({type: APP_POST, payload: newPostBody})
+
+type SetUserProfiletActionType = {
+    type: typeof SET_USER_PROFILE,
+    profile: ProfileType
+}
+
+const setUserProfile = (profile: ProfileType): SetUserProfiletActionType => ({type: SET_USER_PROFILE, profile})
+
+
+
+type SetStatusProfiletActionType = {
+    type: typeof SET_STATUS,
+    status: string
+}
+
+
+ const setStatus = (status: string): SetStatusProfiletActionType => ({type: SET_STATUS, status})
+
+
+
+
+ type SavePhotoActionType = {
+    type: typeof SAVE_PHOTO_SUCCES,
+    payload: PhotosType
+}
+
+
+
+
+const savePhotoSucces = (photos: PhotosType): SavePhotoActionType => ({type: SAVE_PHOTO_SUCCES, payload: photos} )

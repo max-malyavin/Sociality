@@ -2,29 +2,37 @@ import { getAuthUserData } from "../ThunkCreator/ThunkCreator";
 
 const INITIALIZED_SUCCES = 'INITIALIZED_SUCCES';
 
-let initialState = {
+
+export type InitialStateType = {
+    initialized: boolean
+}
+
+
+let initialState: InitialStateType = {
     initialized: false
 };
 
 
-const appReducer = (state = initialState, action) => {
-   
+const appReducer = (state: InitialStateType = initialState, action: any):InitialStateType => {
     switch (action.type) {
         case INITIALIZED_SUCCES:    
             return {
                 ...state,
                 initialized: true
             }
-
         default:
             return state;
     }
-
 }
 
-export const initializedSuccess = ( ) => ({type: INITIALIZED_SUCCES});
 
-export const initializeApp = () => (dispatch) => {
+type InitializedActionType = {
+    type: typeof INITIALIZED_SUCCES
+
+}
+export const initializedSuccess = ( ):InitializedActionType => ({type: INITIALIZED_SUCCES});
+
+export const initializeApp = () => (dispatch: any) => {
     let promise = dispatch(getAuthUserData());
     Promise.all([promise])
     .then(() => {
@@ -33,7 +41,6 @@ export const initializeApp = () => (dispatch) => {
     })
   
 }
-
 
 
 
