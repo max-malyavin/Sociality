@@ -1,0 +1,21 @@
+.news__post {
+    margin: 30px;
+    padding: 15px;
+    display: flex;
+    border: 1px solid black;
+    &-image{
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    }
+    &-info-info {
+      
+        &-text{
+
+        }
+        &-desc{
+
+        }
+    }
+}

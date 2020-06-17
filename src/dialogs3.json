@@ -1,0 +1,69 @@
+[
+  {
+    "_id": "5ed0f59568fe8a2081b71ab8",
+    "text": "Culpa irure eiusmod ea quis. Aute ut nostrud ex dolor cillum. Ad veniam tempor dolore culpa ex ut sint pariatur est aliqua ullamco id. In ipsum culpa nulla non consequat. Labore incididunt velit ipsum enim.",
+    "created_at": "",
+    "user": {
+      "_id": "5ed0f59526411c2f6e54dde3",
+      "fullname": "Campbell Coffey",
+      "avatar": "https://image.flaticon.com/icons/svg/2979/2979284.svg",
+      "isOnline": true
+    }
+  },
+  
+  {
+    "_id": "5ed0f595306c9b51cb1d1a9c",
+    "text": "Irure non minim esse aliqua ea commodo laborum amet ad. Minim do ex laborum do commodo ut sunt eu non anim. Elit cupidatat aliquip cupidatat proident dolor aute et ea. Cupidatat adipisicing eu minim exercitation. Sunt aliqua exercitation deserunt non culpa sit qui officia elit ullamco ipsum amet.",
+    "created_at": "",
+    "user": {
+      "_id": "5ed0f5952a635818b2be2efa",
+      "fullname": "Mattie Gillespie",
+      "avatar": "https://image.flaticon.com/icons/svg/2979/2979284.svg",
+      "isOnline": true
+    }
+  },
+  {
+    "_id": "5ed0f5950c5a392ee79061f7",
+    "text": "Deserunt aliquip aute nisi ex qui est nisi. Consectetur eu enim duis cillum laborum commodo in labore est id sit excepteur tempor voluptate. Exercitation nulla commodo elit ex quis non minim. Dolor laborum tempor commodo mollit commodo ipsum consectetur dolore ipsum et adipisicing enim do. Aliqua nostrud cupidatat ipsum deserunt nulla.",
+    "created_at": "",
+    "user": {
+      "_id": "5ed0f5950f3948714ce03ef5",
+      "fullname": "Callahan Holden",
+      "avatar": "https://image.flaticon.com/icons/svg/2979/2979284.svg",
+      "isOnline": true
+    }
+  },
+  {
+    "_id": "5ed0f595776a411bef643f31",
+    "text": "Minim consequat nisi ea sint sint ex nostrud elit ex laborum exercitation dolore. Magna cupidatat fugiat sunt ea. Amet pariatur ipsum cillum dolor sunt labore mollit cupidatat occaecat aute non aute sunt. Ullamco laboris aliquip quis non quis adipisicing Lorem duis duis deserunt reprehenderit deserunt nulla. Est nostrud nulla eiusmod cillum enim officia commodo nostrud nulla.",
+    "created_at": "",
+    "user": {
+      "_id": "",
+      "fullname": "Shari Fleming",
+      "avatar": "https://image.flaticon.com/icons/svg/2979/2979284.svg",
+      "isOnline": true
+    }
+  },
+  {
+    "_id": "5ed0f59507b8673b5286f618",
+    "text": "Aute commodo ut anim mollit officia exercitation sint reprehenderit. Laborum tempor sint excepteur tempor elit ea. Amet deserunt pariatur exercitation incididunt. Proident ullamco laboris Lorem tempor aliqua culpa qui veniam ad. Labore elit culpa amet reprehenderit aute duis ea velit voluptate tempor dolore voluptate laboris incididunt.",
+    "created_at": "",
+    "user": {
+      "_id": "5ed0f5958a0c040260f99150",
+      "fullname": "Patrick Stein",
+      "avatar": "https://image.flaticon.com/icons/svg/2979/2979284.svg",
+      "isOnline": true
+    }
+  },
+  {
+    "_id": "5ed0f59509d5fa29dad32b1e",
+    "text": "Est veniam Lorem aliquip pariatur reprehenderit esse sunt nostrud eiusmod laborum commodo. Duis mollit qui ad sunt amet proident elit voluptate velit adipisicing magna in. In aute dolore sunt id elit ipsum id id adipisicing exercitation fugiat eiusmod enim laborum. Non eiusmod amet anim enim commodo pariatur ea. Minim dolor enim qui nulla veniam ut eu.",
+    "created_at": "",
+    "user": {
+      "_id": "5ed0f595dd86dc18f58638ff",
+      "fullname": "Tanisha Vega",
+      "avatar": "https://image.flaticon.com/icons/svg/2979/2979284.svg",
+      "isOnline": true
+    }
+  }
+]

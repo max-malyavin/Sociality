@@ -1,0 +1,78 @@
+.chat{
+    display: flex;
+    &__sidebar{
+        width: 320px;
+        &-header{
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            span{
+                margin-right: 5px;
+            }
+        }
+        &-search{
+            padding: 0px 20px 0px 0px;
+            .ant-input{
+                border: 0;
+                height: 28px;
+                padding: 4px 11px 6px;
+            }
+            .ant-input-search{
+                border-radius: 10px;
+            }
+        }
+        &-dialogs{
+            max-height: 600px;
+            .chat-d {
+                margin-top: 20px;
+            overflow: auto;
+            max-height: 510px;
+            }
+        }
+    }
+    &__dialog{
+        flex: 1;
+        &-header{
+            &-center{
+                text-align: center;
+                .status{
+                    color: black;
+                    position: relative;
+                    display: inline-block;
+                   
+                    &::before{
+                        display: block;
+                        position: absolute;
+                        content: '';
+                        width: 6px;
+                        top: 10px;
+                        left: -15px;
+                        height: 6px;
+                        border-radius: 30px;
+                        background-color: red;
+                    }
+                    &--online{
+                        &::before{
+                            position: absolute;
+                            background-color: green;
+                        }
+                    }
+                }
+            }
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            &-username{
+                font-weight: bold;
+                display: block;
+                margin-bottom: 5px;
+            }
+        }
+        &-messages{
+            padding: 20px;
+            overflow: auto;
+            height: 500px;
+        }
+    }
+}

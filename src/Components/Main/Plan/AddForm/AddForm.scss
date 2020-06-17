@@ -1,0 +1,47 @@
+.add-form {
+    padding: 0 12px 12px 12px;
+    &__input{
+        .add-form__textarea{
+        border: 0;
+        padding: 0;
+        margin: 0;
+        resize: none;
+        width: 100%;
+        padding: 5px;
+        cursor: text;
+    }
+    }
+    &__bottom{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .close{
+            font-size: 25px;
+            cursor: pointer;
+            padding: 5px;
+            color: #000000;
+            line-height: 25px;
+        }
+        .button-plan {
+            padding: 5px;
+        }
+         &-add-btn{
+            span{
+                font-size: 35px;
+                color: #546e7a;
+                line-height: 25px;
+            }
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 12px;
+            border-radius: 0 0 3px 3px;
+            cursor: pointer;
+            width: 100%;
+            &:hover{
+                background-color:  #39c071;
+                color: #ffffff;
+            }
+        }
+    }
+}

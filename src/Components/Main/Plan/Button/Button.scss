@@ -1,0 +1,13 @@
+.button-plan{
+    background: #39c071;
+    border-radius: 3px;
+    color: #ffffff;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+    padding: 8px;
+    font-weight: bold;
+    &:hover{
+        background: #71db9e;
+    }
+}

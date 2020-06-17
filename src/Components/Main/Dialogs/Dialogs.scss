@@ -1,0 +1,167 @@
+.message{
+    display: flex;
+    margin-bottom: 20px;
+    &__avatar{
+        display: flex;
+        flex-direction: column-reverse;
+        img{
+            border-radius: 50px;
+            width: 33px;
+            height: 33px;
+            margin-right: 13px;
+            margin-bottom: 22px;
+        }
+    }
+    &__bubble{
+        background: #3674ff;
+        border-radius: 13px 13px 13px 0;
+        padding: 10px ;
+        margin-bottom: 2px;
+        color: #ffffff;
+    }
+    &__content {
+        position: relative;
+    }
+    &__attachments {
+        margin-top: 5px;
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 5px;
+        .attachments__item {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        img {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+        }
+    }
+    &__text {
+        max-width: 400px;
+        color: #ffffff;
+        word-wrap: break-word;
+
+    }
+    .readed {
+        position: absolute;
+        bottom: 32px;
+        left: -105px;
+   }
+    &--is-audio {
+        audio{
+            display: none;
+        }
+        .message__bubble{
+            width: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        .message__audio{
+           
+            .message__audio-info{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+            }
+            &-btn{
+               button{
+                width: 28px;
+                border: 0;
+                outline: none;
+                cursor: pointer;
+                height: 28px;
+                border-radius: 30px;
+                background-color: #0f3997;
+                img{
+                    height: 13px;
+                }
+               }
+            }
+            .message__audio-duration{
+                color: #ffffff;
+                font-weight: bold;
+                opacity: 0.6;
+                font-size: 12px;
+            }
+            .message__audio-progress {
+                background-color: #418fff;
+                position: absolute;
+                left: 0;
+                top: 0;
+                transition: width 0.5s ease;
+                bottom: 0;
+                height: 100%;
+            }
+        }
+   }
+    &--isme{
+        display: flex;
+        flex-direction: row-reverse;
+        .message__bubble{
+            background: #fff;
+            border-radius: 13px 13px 0px 13px;
+            padding: 10px ;
+            margin-bottom: 2px;
+            color: #ffffff;
+            .message__text{
+                color: #000000;
+                text-align: right;
+            }
+        }
+        .message__content {
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        .message__avatar {
+            margin-bottom: 22px;
+            img {
+                margin-right: 0;
+                margin-left: 15px;
+                margin-bottom: 15px;
+            }
+        }
+        
+    }
+    &__typing {
+        span{
+                height: 8px;
+               width: 8px;
+               border-radius: 50%;
+               background: #c1c1c1;
+               display: inline-block;
+               margin-right: 8px;
+               animation-name: typingAnimation;
+               animation-duration: 1s;
+               animation-timing-function: ease-in-out;
+               animation-iteration-count: infinite;
+   
+               &:nth-of-type(1){
+                animation-delay: 1s;
+               }
+               &:nth-of-type(2){
+                   animation-delay: 3s;
+               }
+               &:nth-of-type(3){
+                   animation-delay: 7s;
+               }
+   
+        }
+       }
+       &--image {
+        .attachments__item {
+            height: 150px;
+            width: 150px;
+        }
+    }
+}
+@keyframes typingAnimation{
+    from{
+     opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+
+  }

@@ -1,0 +1,36 @@
+.welcome {
+    display: flex;
+    height: calc( 100% - 45%);
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    &__title{
+        font-size: 35px;
+        line-height: 45px;
+        margin-bottom: 20px;
+    }
+    &__text{
+        font-size: 25px;
+        line-height: 35px;
+        margin-bottom: 20px;
+    }
+    &__warning{
+        font-size: 20px;
+        line-height: 25px;
+        color: rgb(250, 2, 2);
+        margin-bottom: 25px;
+    }
+    &__login{
+            padding: 13px;
+            border: 1px solid #979797;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+            &:hover{
+                background-color: #e7ecf5;
+                transition: ease 1s;
+            }
+        
+    }
+
+}

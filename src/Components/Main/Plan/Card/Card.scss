@@ -1,0 +1,15 @@
+.card {
+    background: #fff;
+    border-radius: 3px;
+    padding: 12px;
+    margin-bottom: 8px;
+    cursor: move;
+    color: #000000;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    span{
+        padding: 5px;
+        cursor: pointer;
+    }
+}

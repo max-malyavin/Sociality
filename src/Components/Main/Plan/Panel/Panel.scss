@@ -1,0 +1,31 @@
+.panel{
+    border-radius: 3px;
+    background: rgb(226, 225, 225);
+    border: 1px solid #ccc;
+    width: 272px;
+    margin-right: 20px;
+    overflow: hidden;
+    &--empty {
+        .add-form{
+            margin-top: 12px;
+        }
+    }
+    &__items{
+        padding: 12px 12px 0 12px;
+    }
+    &__title {
+        font-size: 17px;
+        line-height: 25px;
+        padding: 12px 12px 0 12px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        div{
+            cursor: pointer;
+            color: #000;
+            padding: 3px 8px 3px 8px;
+        }
+    }
+
+}
