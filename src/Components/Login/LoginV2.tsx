@@ -8,40 +8,30 @@ import {Input} from '../../Utils/Common/FormsControls';
 import { UserOutlined, LockOutlined ,MailOutlined} from '@ant-design/icons';
 import { login } from '../../ThunkCreator/ThunkCreator';
 import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, InjectedArrayProps, InjectedFormProps } from 'redux-form';
 import { createField } from '../../Utils/Common/FormsControls';
 import { requiredField } from '../../Utils/Validators/validators';
+import { AppStateType } from '../../Redux/Redux-store';
 
-const Login2 = ({login,isAuth,captcha}) => {
 
-
-    // const onFinish = values => {
-    //       const {email, password} = values
-    //       login(email, password, true)
-    //   };
-
-    const onSubmit = (formData) => {
-    
-       const {email, password,captcha} = formData
-          login(email, password, true, captcha)
-  }
-
-      if(isAuth){
-        return <Redirect to={'/'}/>
-      }
-    return (
-        <div className='login'>
-            <h2>Войти в аккаунт</h2>
-            <p>Пожалуйста,войдите в свой аккаунт</p>
-            <Block>
-            <LoginReduxForm captcha={captcha} onSubmit={onSubmit}/>
-          </Block>
-        </div>
-    )
+type mapStateToPropsType = {
+  isAuth: boolean
+  captcha:any
 }
-const LoginReduxForm = reduxForm({
-  form: 'login'
-})(FormLogin)
+
+type MapDispatchPropsType ={
+  login: (email: string, password: string, rememberMe: boolean, captcha: any) => void
+}
+
+type LoginFormOwnProps = {
+  captcha: string | null
+}
+type LoginFormValuesType = {
+  email: string, password: string, rememberMe: boolean, captcha: any
+}
+
+type LoginFormValuesTypeKeys = Extract<keyof LoginFormValuesType,string>
+
 
 // const InputAntd = (props)=>{
 //   // debuggers
@@ -55,18 +45,20 @@ const LoginReduxForm = reduxForm({
 //   )
 // } 
 
-function FormLogin({handleSubmit, error,captcha}){
+// const FormLogin:React.FC<InjectedFormProps> <LoginFormValuesType></LoginFormValuesType>
+const FormLogin: React.FC<InjectedFormProps<LoginFormValuesType,LoginFormOwnProps> & LoginFormOwnProps> =({handleSubmit, error,captcha})=>{
+ 
   return (
       <form onSubmit={handleSubmit}>
       <div className='login__email'>
-        {createField("Почта", "email",[requiredField], Input )}
+        {createField<LoginFormValuesTypeKeys>("Почта", "email",[requiredField], Input )}
 
       </div>
        <div className='login__password'>
-         {createField("Пароль", "password",[requiredField], Input, {type: "password"} )}
+         {createField<LoginFormValuesTypeKeys>("Пароль", "password",[requiredField], Input, {type: "password"} )}
        </div>
          <div style={{marginBottom: '10px'}} className='login__checkbox'>
-                      {/* {createField(null, "rememberMe",[], Input, {type: "checkbox"}, "Запомнить меня" )} */}
+         {/* {createField(null, "rememberMe",[], Input, {type: "checkbox"}, "Запомнить меня" )} */}
            <Field component={'input'} name={'rememberMe'}type={'checkbox'}/>
               <span style={{marginLeft: '10px'}}>
                 Запомнить меня
@@ -74,10 +66,13 @@ function FormLogin({handleSubmit, error,captcha}){
         </div>
       <div>    
         {captcha && <img src={captcha}/>}
-        {captcha && createField("Анти-бот", "captcha",[requiredField], Input, {type: "text"} )}
-        <Button type="primary" size='large' htmlType="submit">
+        {captcha && createField<LoginFormValuesTypeKeys>("Анти-бот", "captcha",[requiredField], Input, {type: "text"} )}
+        {/* <Button type="primary" size='large' htmlType="submit">
                 Войти в аккаунт
-          </Button>
+          </Button> */}
+        <button type="submit" style={{cursor: 'poiner'}} className='ant-btn button ant-btn-primary ant-btn-lg'>
+                Войти в аккаунт
+          </button>
       
           {error && <div className="form-summury " style={{marginTop: '25px'}}>
                         {error}
@@ -88,9 +83,42 @@ function FormLogin({handleSubmit, error,captcha}){
   </form>
   )
 }
+const Login2: React.FC<mapStateToPropsType & MapDispatchPropsType> = ({login,isAuth,captcha}) => {
 
 
-const mapStateToProps = (state) => ({
+
+
+
+  // const onFinish = values => {
+  //       const {email, password} = values
+  //       login(email, password, true)
+  //   };
+
+  const onSubmit = (formData:any) => {
+  
+     const {email, password,captcha} = formData
+        login(email, password, true, captcha)
+}
+
+    if(isAuth){
+      return <Redirect to={'/'}/>
+    }
+  return (
+      <div className='login'>
+          <h2>Войти в аккаунт</h2>
+          <p>Пожалуйста,войдите в свой аккаунт</p>
+          <Block className={false}>
+          <LoginReduxForm captcha={captcha} onSubmit={onSubmit}/>
+          </Block>
+      </div>
+  )
+}
+const LoginReduxForm = reduxForm<LoginFormValuesType,LoginFormOwnProps>({
+  form: 'login'
+})(FormLogin)
+
+
+const mapStateToProps = (state:any):mapStateToPropsType => ({
   isAuth: state.auth.isAuth,
   captcha: state.auth.captchaURL,
 })
