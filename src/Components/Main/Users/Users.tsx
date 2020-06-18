@@ -6,19 +6,30 @@ import './Users.scss'
 import { getUsersThunk, unfollowThunk, followThunk } from '../../../ThunkCreator/ThunkCreator'
 import { Pagination } from 'antd';
 import { UserType } from '../../../Types/Types'
+import { AppStateType } from '../../../Redux/Redux-store'
 
-type Props = {
+
+
+
+type MapStatePropsType = {
     pageSize: number,
     isFetching: boolean,
     totalUsersCount: number,
     users: Array<UserType> | any,
-    followingInProgress: any,
     currentPage: number,
+    usersPage:any,
+}
+type MapDispatchPropsType = {
     followThunk: any,
     unfollowThunk: any,
     getUsersThunk: any,
-    usersPage:any,
+    followingInProgress: any,
 }
+
+type OwnPropsType = {
+}
+
+type Props = MapStatePropsType & MapDispatchPropsType & OwnPropsType
 
 
 const Users: React.FC<Props> = ({users: {usersPage: {users, pageSize, isFetching, totalUsersCount,
@@ -71,7 +82,7 @@ const Users: React.FC<Props> = ({users: {usersPage: {users, pageSize, isFetching
     )
 }
 
-const  mapStateToProps = (state: any) => {
+const  mapStateToProps = (state: AppStateType) => {
     return {
         users: state
     }

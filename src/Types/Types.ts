@@ -1,3 +1,5 @@
+import { AppStateType } from "../Redux/Redux-store"
+
 export type PostsType = {
     id: number;
     text: string;
@@ -33,4 +35,5 @@ export type UserType = {
     photos: PhotosType
 }
 
+export type GetStateType = ()=> AppStateType
 

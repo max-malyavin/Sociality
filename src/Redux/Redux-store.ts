@@ -11,7 +11,7 @@ import panelReducer from '../Reducers/panel-reducer';
 import logger from 'redux-logger'
 import covidReducer from '../Reducers/codiv-reducer';
 
-let reducers = combineReducers({
+let rootReducers = combineReducers({
     profile:  profileReducer,
     messages: dialogsReducer,
     messagesDialog: messagesDialog,
@@ -22,7 +22,12 @@ let reducers = combineReducers({
     panels: panelReducer,
     codiv: covidReducer
 })
-let store = createStore(reducers, applyMiddleware(thunk,logger))
+
+type RootReducerType = typeof rootReducers;
+
+export type AppStateType = ReturnType<RootReducerType>;
+
+let store = createStore(rootReducers, applyMiddleware(thunk,logger))
 
 
 export default store;

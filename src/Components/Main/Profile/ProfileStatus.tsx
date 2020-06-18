@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import { Badge } from 'antd';
 import { NotificationOutlined } from '@ant-design/icons';
-const ProfileStatus = (props) => {
+
+
+type Props ={
+    status: any,
+    updateStatus: any
+}
+
+const ProfileStatus:React.FC<Props> = ({status,updateStatus}) => {
 
     // const statuser = props.statuswho ? true : false
     let [editMode, setEditMode] = useState(true);
-    let [status, setStatus] = useState(props.status);
+    let [statusComponent, setStatus] = useState(status);
 
 
     useEffect(()=> {
-        setStatus(props.status)
-     } , [props.status] )
+        setStatus(status)
+     } , [status] )
 
 
     const activateEditMode = () => {
@@ -18,27 +25,27 @@ const ProfileStatus = (props) => {
     }
     const deactivateEditMode =()=> {
          setEditMode(!false);
-         props.updateStatus(status)
+         updateStatus(statusComponent)
     }
     
 
-    const onStatusChange = (e) => {
+    const onStatusChange = (e:any) => {
          setStatus(e.currentTarget.value)
     }
     // const statuswho = props.statuswho ? props.statuswho.length : null
     return (
         <div> 
             <span style={{marginRight: '10px',
-        fontWeight: '700'}}><span style={{marginRight: '7px'}}>Статус</span>
-        <Badge dot={props.status? 'dot' : null}>
+        fontWeight: 700}}><span style={{marginRight: '7px'}}>Статус</span>
+        <Badge dot={status ? true : false}>
         <NotificationOutlined />
       </Badge></span>
             {editMode 
-            ? <span className="status" onClick={activateEditMode} >{status}</span>
+            ? <span className="status" onClick={activateEditMode} >{statusComponent}</span>
             :<span>
                <input autoFocus={true} onChange={onStatusChange} 
                 onBlur={ deactivateEditMode }
-                type="text" value={status}/>
+                type="text" value={statusComponent}/>
             </span>
             }      
         </div>
