@@ -1,4 +1,5 @@
 import Axios from "axios"
+import { ProfileType } from "../Types/Types";
 
 
 const istance = Axios.create({
@@ -16,31 +17,31 @@ export const userAPI = {
             return data.data
          })
      },
-     follow(id){
+     follow(id: number){
         return istance.post(`follow/${id}`)
      },
-     unfollow(id){
+     unfollow(id: number){
         return istance.delete(`follow/${id}`)
      },
-     getProfile(userId){
+     getProfile(userId: number){
          console.log("Use old object")
         return profileAPI.getProfile(userId)
      }
 }
 
 export const profileAPI = {
-     getProfile(userId){
+     getProfile(userId: number){
         return istance.get(`profile/${userId}`)
      },
-     getStatus(userId){
+     getStatus(userId: number){
         return istance.get(`profile/status/${userId}`)
      },
-     updateStatus(status){
+     updateStatus(status: string | null){
         return istance.put(`profile/status`, {
             status: status
         })
      },
-     savePhoto(photoFile){ 
+     savePhoto(photoFile:any){ 
         let formData = new FormData()
         formData.append('image', photoFile)
         return istance.put(`profile/photo`, formData, {
@@ -49,7 +50,7 @@ export const profileAPI = {
             }
         })
      },
-     saveProfile(profile){
+     saveProfile(profile: ProfileType){
       return istance.put(`profile`, profile)
      }
 
@@ -57,17 +58,31 @@ export const profileAPI = {
 
 
 
+
+type authAPIMe = {
+   data: {id:number, email:string, login:string},
+   resultCode: number,
+   messages: Array<string>
+}
+type authAPILogin = {
+   data: {userId:number}
+   resultCode: number,
+   messages: Array<string>
+}
+
 export const authAPI = {
     me(){
-        return istance.get(`auth/me`,)
+        return istance.get<authAPIMe>(`auth/me`,)
     },
-    login(email,password,rememberMe = false,captcha = null){
-       return istance.post(`auth/login`, { email, password, rememberMe,captcha})
+    login(email: string,password: string,rememberMe = false,captcha: null | string = null){
+       return istance.post<authAPILogin>(`auth/login`, { email, password, rememberMe,captcha})
     },
     logout(){
       return istance.delete(`auth/login`)
     }
 }
+
+
 
 export const securityAPI = {
     getCaptchaURL(){
