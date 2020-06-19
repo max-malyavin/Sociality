@@ -132,6 +132,14 @@ export default usersReducer;
 
 
 
+
+
+
+
+
+
+
+
 export const setTotalUserCount = (totalCount:number):setTotalUserCountType => ({type: SET_TOTAL_USERS_COUNT, totalCount})
 export const setCurrentPage = (pageNumber:number):setCurrentPageType => ({type: CURRENT_PAGE, pageNumber})
 export const toggleFetching = (isFetching:boolean):toggleFetchingType => ({type: TOGGLE_IS_FETCHING, isFetching})

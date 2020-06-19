@@ -1,8 +1,12 @@
 import { toggleFetching,unfollow, setUsers, setTotalUserCount, toggleFollowingProgress, follow, setUserProfile,setCurrentPage, setAuthUserData, setStatus, setIsLoading,setDialogs, setMessages, savePhotoSucces, setCurrentMessages, setCovidData, setCountryCovid, CAPTCHA } from "../Actions/Actions"
-import { userAPI, authAPI, profileAPI, securityAPI } from "../Api/Api"
+
 import { gialogsAPI } from "../Api/ApiDialogs"
 import { stopSubmit } from "redux-form"
 import { codivAPI } from "../Api/ApiCovid"
+import { userAPI } from "../Api/UserAPI"
+import { profileAPI } from "../Api/ProfileAPI"
+import { authAPI } from "../Api/authAPI"
+import { securityAPI } from "../Api/securityAPI"
 
 export const getUsersThunk = (currentPage, pageSize) => async (dispatch) => {
     dispatch(toggleFetching( true ))
