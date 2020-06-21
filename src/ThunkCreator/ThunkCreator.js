@@ -49,14 +49,6 @@ export const getUserProfileThunk = (userId) => async (dispatch) => {
 }
 
 
-export const getAuthUserData = () => async (dispatch) => {
-    let response = await authAPI.me()
-    if(response.data.resultCode === 0){
-       let {id, login,email} = response.data.data
-         dispatch(setAuthUserData(id,email, login,true))
-    }
-}
-
 export const getStatus = (userId) =>async (dispatch) => {
     let response = await profileAPI.getStatus(userId)
      dispatch(setStatus(response.data))
@@ -98,31 +90,6 @@ export const fetachMessages = (dialogId) => (dispatch) => {
 }
 
 
-export const login = (email,password,rememberMe,captcha) => async (dispatch) => {
-    
-    let response = await authAPI.login(email,password,rememberMe,captcha)
-    if(response.data.resultCode === 0){
-         dispatch(getAuthUserData())
-    } else if(response.data.resultCode === 10){
-       dispatch(getCaptchaURL())
-    } else {
-        let action = stopSubmit('login', {_error: 'Пожалуйста, проверьте правильность написания почты и пароля.'})
-        dispatch(action)
-    }
-}
-export const getCaptchaURL = () => async (dispatch) => {
-    let response = await securityAPI.getCaptchaURL()
-    dispatch(CAPTCHA(response.data.url))
-}
-
-
-export const logout = () => async (dispatch) => {
-    let response = await authAPI.logout()
-    if(response.data.resultCode === 0){
-         dispatch(setAuthUserData(null,null, null,false))
-    }
-}
-
 export const handleCountryChange = (country) => async (dispatch) => {
     let response = await codivAPI.choceCountries(country)
     dispatch(setCovidData(response))
@@ -154,3 +121,37 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
 
 
 
+//auth
+
+export const login = (email,password,rememberMe,captcha) => async (dispatch) => {
+    
+    let response = await authAPI.login(email,password,rememberMe,captcha)
+    if(response.data.resultCode === 0){
+         dispatch(getAuthUserData())
+    } else if(response.data.resultCode === 10){
+       dispatch(getCaptchaURL())
+    } else {
+        let action = stopSubmit('login', {_error: 'Пожалуйста, проверьте правильность написания почты и пароля.'})
+        dispatch(action)
+    }
+}
+export const getCaptchaURL = () => async (dispatch) => {
+    let response = await securityAPI.getCaptchaURL()
+    dispatch(CAPTCHA(response.data.url))
+}
+
+
+export const logout = () => async (dispatch) => {
+    let response = await authAPI.logout()
+    if(response.data.resultCode === 0){
+         dispatch(setAuthUserData(null,null, null,false))
+    }
+}
+
+export const getAuthUserData = () => async (dispatch) => {
+    let response = await authAPI.me()
+    if(response.data.resultCode === 0){
+       let {id, login,email} = response.data.data
+         dispatch(setAuthUserData(id,email, login,true))
+    }
+}

@@ -7,7 +7,7 @@ const istance = Axios.create({
 
 export const codivAPI = {
      getInfo(){
-        return istance.get().then(({data : {confirmed,recovered,deaths,lastUpdate}}) => {
+        return istance.get('').then(({data : {confirmed,recovered,deaths,lastUpdate}}) => {
             const modifiedData ={
                 confirmed,
                 recovered,
@@ -20,7 +20,7 @@ export const codivAPI = {
      fetachDailyDate(){
         return istance.get(`/daily`).then(({data}) => {
 
-            const modifiedData = data.map(dailyData =>({
+            const modifiedData = data.map((dailyData:any) =>({
                 confirmed: dailyData.confirmed.total,
                 deaths: dailyData.deaths.total,
                 date: dailyData.reportDate
@@ -30,10 +30,10 @@ export const codivAPI = {
     },
      countries(){
         return istance.get(`/countries`).then(({data:{countries}}) => {
-            return countries.map((country)=> country.name)
+            return countries.map((country:any)=> country.name)
         })
     },
-     choceCountries(country){
+     choceCountries(country:string){
         return istance.get(`/countries/${country}`).then(({data}) => {
             return data
         })

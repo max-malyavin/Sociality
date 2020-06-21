@@ -10,7 +10,7 @@ export const setCurrentPage = (pageNumber) => ({type: CURRENT_PAGE, pageNumber})
 export const setTotalUserCount = (totalCount) => ({type: SET_TOTAL_USERS_COUNT, totalCount}) //+
 export const toggleFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching}) //+
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})//+
-export const setAuthUserData = (id, email, login, isAuth ) => ({type: SET_USER_DATA, payload: {id, email, login, isAuth}}) //+
+
 export const toggleFollowingProgress = (isFetching,userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId}) //+
 export const setStatus = (status) => ({type: SET_STATUS, status})//+
 export const setDialogs = (items) => ({type: DIALOGS_SET_ITEMS, payload: items})
@@ -28,4 +28,23 @@ export const addLike = (id) => ({type: ADD__LIKE, payload: id})
 export const disLike = (id) => ({type: DIS__LIKE, payload: id})
 export const setCovidData = (data) => ({type: SET_COVID_DATA, payload: data})
 export const setCountryCovid = (country) => ({type: SET_COVID_COUNTRY, payload: country})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// auth!
+export const setAuthUserData = (id, email, login, isAuth ) => ({type: SET_USER_DATA, payload: {id, email, login, isAuth}}) //+
 export const CAPTCHA = (url) => ({type: GET_CAPTCHA_URL, payload: url})//+

@@ -1,25 +1,15 @@
 import { SET_USER_DATA, GET_CAPTCHA_URL } from "../Constants/Constants";
 
 
-
-export type InitialStateType = {
-    id: number | null,
-    email: string  | null,
-    login: string  | null,
-    isFetching: boolean,
-    isAuth: boolean,
-    captchaURL: string  | null,
-}
-
-let initialState = {
-    id: null,
-    email: null,
-    login: null,
-    isFetching: false,
-    isAuth: false,
-    captchaURL: null
+let initialState= {
+    id: null as number | null,
+    email: null as string  | null,
+    login: null as string  | null,
+    isFetching: false as boolean,
+    isAuth: false as boolean,
+    captchaURL: null as string  | null,
 };
-
+export type InitialStateType = typeof initialState
 
 const authReducer = (state = initialState, action: any):InitialStateType => {
    

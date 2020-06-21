@@ -39,7 +39,6 @@ const  App = ({initializeApp,initilized,isAuth,id}) => {
 }
 
 const  mapStateToProps = (state) => {
-  
   return {
       initilized: state.app.initialized,
       isAuth: state.auth.isAuth,

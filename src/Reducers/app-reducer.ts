@@ -1,12 +1,10 @@
 import { getAuthUserData } from "../ThunkCreator/ThunkCreator";
 
-const INITIALIZED_SUCCES = 'INITIALIZED_SUCCES';
+const INITIALIZED_SUCCES = 'APP/INITIALIZED_SUCCES';
 
-export type InitialStateType = {
-    initialized: boolean
-}
+export type InitialStateType = typeof initialState
 
-let initialState: InitialStateType = {
+let initialState = {
     initialized: false
 };
 
@@ -22,17 +20,20 @@ const appReducer = (state: InitialStateType = initialState, action: any):Initial
     }
 }
 
-
-type InitializedActionType = {
+type initializedSuccessActionType = {
     type: typeof INITIALIZED_SUCCES
 }
-export const initializedSuccess = ( ): InitializedActionType => ({type: INITIALIZED_SUCCES});
+
+
+const actions = {
+    initializedSuccess: ():initializedSuccessActionType => ({type: INITIALIZED_SUCCES})
+}
 
 export const initializeApp = () => (dispatch: any) => {
     let promise = dispatch(getAuthUserData());
     Promise.all([promise])
     .then(() => {
-        dispatch(initializedSuccess());
+        dispatch(actions.initializedSuccess());
 
     })
   

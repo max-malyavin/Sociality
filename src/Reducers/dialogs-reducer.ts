@@ -1,5 +1,18 @@
 import { DIALOGS_SET_ITEMS, DIALOGS_SET_CURRENT_DIALOG} from "../Constants/Constants";
 
+type DialogType = {
+  _id: string;
+  text: string;
+  created_at: any ;
+  unreaded: number;
+   user: {
+      _id: string;
+       fullname: string;
+       avatar: string;
+       isOnline: boolean;
+      };
+  dialog: string;
+}
 
 let initialState = {
     items: [{
@@ -18,7 +31,7 @@ let initialState = {
         {
           "_id": "5ed0f595a8beb33107f4a9ee",
           "text": "Привет,как дела?)",
-          "created_at": (new Date() - 90500000),
+          "created_at": (+new Date() - 90500000),
           "unreaded" : 0,
           "user": {
             "_id": "5ed0f59561e939c364aeaa9e",
@@ -31,7 +44,7 @@ let initialState = {
         {
           "_id": "5ed0f595852e466df2fde940",
           "text": "Это произошло вчера,примерно в 18:00",
-          "created_at": (new Date() - 5000000),
+          "created_at": (+new Date() - 5000000),
           "unreaded" : 0,
           "user": {
             "_id": "5ed0f595dc00c3fe10ab4727",
@@ -44,7 +57,7 @@ let initialState = {
         {
           "_id": "5ed0f595306c9b51cb1d1a9c",
           "text": "Новость однозначно хорошая,но это действительно так произошло?",
-          "created_at": (new Date() - 6600000),
+          "created_at": (+new Date() - 6600000),
           "unreaded" : 0,
           "user": {
             "_id": "5ed0f5952a635818b2be2efa",
@@ -82,12 +95,14 @@ let initialState = {
         // },
         
 
-    ],
-    currentDialog: null,
+    ] as Array<DialogType>,
+    currentDialog: null as null | string,
     isLoading: false
 };
 
- const dialogsReducer = (state = initialState, action) => {
+
+export type InitialStateType = typeof initialState
+ const dialogsReducer = (state = initialState, action:any):InitialStateType => {
    
     switch (action.type) {
         case DIALOGS_SET_ITEMS: 

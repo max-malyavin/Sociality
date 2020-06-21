@@ -27,6 +27,10 @@ type RootReducerType = typeof rootReducers;
 
 export type AppStateType = ReturnType<RootReducerType>;
 
+
+
+
+
 let store = createStore(rootReducers, applyMiddleware(thunk,logger))
 
 
