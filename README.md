@@ -20,7 +20,6 @@
 
 
 # Демо
-Демо - https://max-malyavin.github.io/Sociality
 
 ![sociality](https://user-images.githubusercontent.com/57911146/87251104-f04abd80-c471-11ea-84a9-0fc0987f88fd.png)
 ![sociality2](https://user-images.githubusercontent.com/57911146/87251119-0193ca00-c472-11ea-945d-066124c6c436.png)
@@ -28,6 +27,8 @@
 ![sociality4](https://user-images.githubusercontent.com/57911146/87251129-0fe1e600-c472-11ea-8154-e64d982c2764.png)
 ![sociality5](https://user-images.githubusercontent.com/57911146/87251132-153f3080-c472-11ea-89db-e394ab823215.png)
 ![sociality6](https://user-images.githubusercontent.com/57911146/87251135-196b4e00-c472-11ea-997c-631192423542.png)
+
+Демо - https://max-malyavin.github.io/Sociality
 
 ## Установка
 
